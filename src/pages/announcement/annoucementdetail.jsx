@@ -10,7 +10,7 @@ import BreadcrumbComponent from "../../layout/BreadcrumbComponent";
 
 const { Title, Text } = Typography;
 
-export default function noticedetail() {
+export default function noticedetail() { 
 	const [isModalVisible, setIsModalVisible] = useState(false);
 	const handleDeleteClick = () => {
 		setIsModalVisible(true);

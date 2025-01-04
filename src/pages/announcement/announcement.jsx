@@ -178,6 +178,12 @@ export default function announcement() {
 		setValue(e.target.value);
 	};
 
+	const [selectedOption, setSelectedOption] = useState("");
+
+	const handleRadioChange = (e) => {
+		setSelectedOption(e.target.value);
+	};
+
 	return (
 		<>
 			<div>
@@ -207,7 +213,7 @@ export default function announcement() {
 					</div>
 				</div>
 
-				<Table columns={columns} dataSource={data} pagination={false} />
+				<Table columns={columns} dataSource={data} pagination={true} />
 			</section>
 
 			<section>
@@ -256,44 +262,48 @@ export default function announcement() {
 							<Input placeholder="Subject" className="h-[40px] w-[470px]" />
 						</Form.Item>
 
-						<Form.Item
-							label={
-								<span className="text-customCategoryColor">Department</span>
-							}
-							name="Department"
-						>
-							<Select className="h-[40px] w-[80px]">
-								<Select.Option value="sick">Sick Leave</Select.Option>
-								<Select.Option value="urgent">Urgent Leave</Select.Option>
-								<Select.Option value="fmla">FMLA</Select.Option>
-								<Select.Option value="half">Half Leave</Select.Option>
-							</Select>
-						</Form.Item>
+					
 
 						<Form.Item
-							label={<span className="text-customCategoryColor">Set To</span>}
-							name="set"
-						>
-							<Radio.Group onChange={onChange} value={value}>
-								<Radio value="3">Department</Radio>
-								<Radio value="2">Employee Type</Radio>
-								<Radio value="1">All Employees</Radio>
-							</Radio.Group>
-						</Form.Item>
+						label={<span className="text-customCategoryColor">Set To</span>}
+						name="set"
+					>
+						<Radio.Group onChange={handleRadioChange} value={selectedOption}>
+						<Radio value="department">Department</Radio>
+						<Radio value="employee">Employee Type</Radio>
+						<Radio value="all">All Employees</Radio>
+						</Radio.Group>
+					</Form.Item>
 
+						{(selectedOption === "department" || selectedOption === "all") && (
 						<Form.Item
-							label={
-								<span className="text-customCategoryColor">Department</span>
-							}
-							name="Department"
+						label={<span className="text-customCategoryColor">Department</span>}
+						name="Department"
 						>
-							<Select className="h-[40px] w-[80px]">
-								<Select.Option value="sick">Sick Leave</Select.Option>
-								<Select.Option value="urgent">Urgent Leave</Select.Option>
-								<Select.Option value="fmla">FMLA</Select.Option>
-								<Select.Option value="half">Half Leave</Select.Option>
-							</Select>
+						<Select className="h-[40px] w-[80px]">
+							<Select.Option value="sick">Sick Leave</Select.Option>
+							<Select.Option value="urgent">Urgent Leave</Select.Option>
+							<Select.Option value="fmla">FMLA</Select.Option>
+							<Select.Option value="half">Half Leave</Select.Option>
+						</Select>
 						</Form.Item>
+      					)}
+
+				{(selectedOption === "employee" || selectedOption === "all") && (
+					<Form.Item
+					label={<span className="text-customCategoryColor">Employee</span>}
+					name="Employee"
+					>
+					<Select className="h-[40px] w-[80px]">
+						<Select.Option value="joy">Joy</Select.Option>
+						<Select.Option value="Trump">Trump</Select.Option>
+						<Select.Option value="Root">Root</Select.Option>
+						<Select.Option value="Micheal">Micheal</Select.Option>
+					</Select>
+					</Form.Item>
+				)}
+
+
 					</Form>
 				</Modal>
 			</section>

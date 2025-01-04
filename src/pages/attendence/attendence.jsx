@@ -264,7 +264,7 @@ export default function Attendance() {
 					}}
 					columns={columns}
 					dataSource={data}
-					pagination={false}
+					pagination={true}
 				/>
 			</section>
 		</>

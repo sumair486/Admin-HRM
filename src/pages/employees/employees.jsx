@@ -275,7 +275,7 @@ export default function employees() {
 					</div>
 				</div>
 
-				<Table columns={columns} dataSource={data} pagination={false} />
+				<Table columns={columns} dataSource={data} pagination={true} />
 			</section>
 		</>
 	);

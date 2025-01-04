@@ -159,7 +159,7 @@ export default function notice() {
 					style={{
 						color:
 							text === "Yes" ? "#57b81b" : text === "No" ? "#e62e53" : "#000",
-						background: "#e9f9e8",
+						background: "#e9f9e8",padding:"5px",borderRadius:"10px",
 					}}
 				>
 					{text}
@@ -239,7 +239,7 @@ export default function notice() {
 					</div>
 				</div>
 
-				<Table columns={columns} dataSource={data} pagination={false} />
+				<Table columns={columns} dataSource={data} pagination={true} />
 			</section>
 
 			<section>
