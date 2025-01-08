@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 
 import {
 	Breadcrumb,
@@ -17,117 +17,37 @@ import {
 import moment from "moment";
 import { Link } from "react-router-dom";
 
-import { SearchOutlined } from "@ant-design/icons";
+
 
 import edit_icon from "../../../public/assets/Employees 1/pencil (1).png";
 import delete_icon from "../../../public/assets/Employees 1/trash (1).png";
 import brad_logo from "../../../public/assets/Notices 1/home.png";
 import BreadcrumbComponent from "../../layout/BreadcrumbComponent";
 import SearchComponent from "../../layout/SearchComponent";
+import tableData from "../../pages/datatable/tableData.json";
+
 
 export default function employees() {
 	const { Option } = Select;
+	const [data, setData] = useState([]);
 
-	const [data, setData] = useState([
-		{
-			s_no: "1",
-			key: "1",
-			id: (
-				<Link to="/employees-detail" className="text-sidebarBgColor underline">
-					EMP_01
-				</Link>
-			),
-			name: "John Doe",
-			number: "+03440948044",
-			designation: "Supervisor",
-			request: "Sick Leave",
-			date: "12/05/2021",
-			status: "New",
-		},
-		{
-			s_no: "2",
-			key: "2",
-			id: <h1 className="text-sidebarBgColor underline">EMP_02</h1>,
-			name: "Jane Smith",
-			number: "+03440948044",
-			designation: "Manager",
-			request: "Advanced Cash",
-			date: "12/05/2021",
-			status: "Approved",
-		},
-		{
-			s_no: "3",
-			key: "3",
-			id: <h1 className="text-sidebarBgColor underline">EMP_03</h1>,
-			name: "Sam Wilson",
-			number: "+03440948044",
-			designation: "Engineer",
-			request: "Loan Request",
-			date: "12/05/2021",
-			status: "Rejected",
-		},
-		{
-			s_no: "4",
-			key: "4",
-			id: <h1 className="text-sidebarBgColor underline">EMP_04</h1>,
-			name: "Emily Davis",
-			number: "+03440948044",
-			designation: "Designer",
-			request: "Sick Leave",
-			date: "12/05/2021",
-			status: "New",
-		},
-		{
-			s_no: "5",
-			key: "5",
-			id: <h1 className="text-sidebarBgColor underline">EMP_05</h1>,
-			name: "Michael Brown",
-			number: "+03440948044",
-			designation: "Technician",
-			request: "Sick Leave",
-			date: "12/05/2021",
-			status: "Rejected",
-		},
-		{
-			s_no: "6",
 
-			key: "6",
-			id: <h1 className="text-sidebarBgColor underline">EMP_06</h1>,
-			name: "Sophia Green",
-			number: "+03440948044",
-			designation: "HR",
-			request: "Sick Leave",
-			date: "12/05/2021",
-			status: "Approved",
-		},
-		{
-			s_no: "7",
-			key: "7",
-			id: <h1 className="text-sidebarBgColor underline">EMP_07</h1>,
-			name: "James Taylor",
-			number: "+03440948044",
-			designation: "Accountant",
-			request: "Sick Leave",
-			date: "12/05/2021",
-			status: "New",
-		},
-		{
-			s_no: "8",
-			key: "8",
-			id: <h1 className="text-sidebarBgColor underline">EMP_08</h1>,
-			name: "Olivia White",
-			number: "+03440948044",
-			designation: "Supervisor",
-			request: "Sick Leave",
-			date: "12/05/2021",
-			status: "New",
-		},
-	]);
-
+	useEffect(() => {
+		setData(
+			tableData.map((item) => ({
+				...item,
+				id : (
+					<Link to="/employees-detail" className="text-sidebarBgColor underline">
+						{item.id}
+					</Link>
+				),
+			}))
+		);
+	}, []);
 	const columns = [
 		{
 			title: "S.No",
-			dataIndex: "s_no",
+			dataIndex: "key",
 			key: "s_no",
 			sorter: (a, b) => a.s_no.localeCompare(b.s_no),
 		},

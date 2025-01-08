@@ -4,11 +4,12 @@ import { Breadcrumb, Button, Input, Select, Table, TimePicker } from "antd";
 import moment from "moment";
 import { Link } from "react-router-dom";
 
-import { SearchOutlined } from "@ant-design/icons";
+
 
 import brad_logo from "../../../public/assets/Notices 1/home.png";
 import BreadcrumbComponent from "../../layout/BreadcrumbComponent";
 import SearchComponent from "../../layout/SearchComponent";
+import tableData from "../../pages/datatable/tableData.json";
 
 export default function Attendance() {
 	const { Option } = Select;
@@ -22,89 +23,9 @@ export default function Attendance() {
 	};
 
 	const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-	const [data, setData] = useState([
-		{
-			key: "1",
-			id: "EMP_01",
-			name: "John Doe",
-			designation: "Supervisor",
-			date: "12/05/2021",
-			timeIn: "09:00 AM",
-			timeOut: "05:00 PM",
-			status: "Present",
-		},
-		{
-			key: "2",
-			id: "EMP_02",
-			name: "Jane Smith",
-			designation: "Manager",
-			date: "12/05/2021",
-			timeIn: "09:30 AM",
-			timeOut: "05:30 PM",
-			status: "Absent",
-		},
-		{
-			key: "3",
-			id: "EMP_03",
-			name: "Sam Wilson",
-			designation: "Engineer",
-			date: "12/05/2021",
-			timeIn: "09:15 AM",
-			timeOut: "06:00 PM",
-			status: "Present",
-		},
-		{
-			key: "4",
-			id: "EMP_04",
-			name: "Emily Davis",
-			designation: "Designer",
-			date: "12/05/2021",
-			timeIn: "10:00 AM",
-			timeOut: "05:00 PM",
-			status: "Late",
-		},
-		{
-			key: "5",
-			id: "EMP_05",
-			name: "Michael Brown",
-			designation: "Technician",
-			date: "12/05/2021",
-			timeIn: "09:45 AM",
-			timeOut: "04:30 PM",
-			status: "Time Off",
-		},
-		{
-			key: "6",
-			id: "EMP_06",
-			name: "Sophia Green",
-			designation: "HR",
-			date: "12/05/2021",
-			timeIn: "08:30 AM",
-			timeOut: "05:30 PM",
-			status: "Present",
-		},
-		{
-			key: "7",
-			id: "EMP_07",
-			name: "James Taylor",
-			designation: "Accountant",
-			date: "12/05/2021",
-			timeIn: "09:05 AM",
-			timeOut: "05:00 PM",
-			status: "Leave",
-		},
-		{
-			key: "8",
-			id: "EMP_08",
-			name: "Olivia White",
-			designation: "Supervisor",
-			date: "12/05/2021",
-			timeIn: "10:00 AM",
-			timeOut: "06:00 PM",
-			status: "Late",
-		},
-	]);
+	const [data, setData] = useState(tableData);
 
+	
 	const columns = [
 		{
 			title: "Id",

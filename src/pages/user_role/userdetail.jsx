@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { Breadcrumb, Button, Modal, Select, Tooltip, Typography } from "antd";
-
+import { useNavigate } from "react-router-dom";
 
 import edit_icon from "../../../public/assets/Employees 1/pencil (1).png";
 import delete_icon from "../../../public/assets/Employees 1/trash (1).png";
@@ -10,7 +10,7 @@ import BreadcrumbComponent from "../../layout/BreadcrumbComponent";
 
 const { Title, Text } = Typography;
 
-export default function noticedetail() {
+export default function userdetail() {
 	const [isModalVisible, setIsModalVisible] = useState(false);
 	const handleDeleteClick = () => {
 		setIsModalVisible(true);
@@ -27,8 +27,8 @@ export default function noticedetail() {
 
 	const breadcrumbItems = [
 		{ icon: brad_logo },
-		{ title: "Warning Letters", href: "" },
-		{ title: "Warning Letter Details", href: "" },
+		{ title: "User and Roles", href: "" },
+		{ title: "User Details", href: "" },
 	];
 
 	return (
@@ -36,7 +36,7 @@ export default function noticedetail() {
 			<div>
 				<BreadcrumbComponent
 					breadcrumbItems={breadcrumbItems}
-					headerTitle="Warning Letter Details"
+					headerTitle="User Details"
 				/>
 			</div>
 
@@ -75,40 +75,28 @@ export default function noticedetail() {
 							level={4}
 							className="mb-4 text-2xl font-bold text-sidebarBgColor"
 						>
-							Warning Regarding Violation of Company Rules
+							Ali Ahmed
 						</h1>
-						<div className="mb-4 flex">
-							<h1 strong>Employee Name: </h1>
-							<h1 className="ml-44 font-bold text-sidebarBgColor">Ali Ahmad</h1>
+                        <div className="mb-4 flex">
+							<h1 className="font-bold" strong>User Detail: </h1>
+					
 						</div>
-						<div className="mb-6">
-							<h1 strong className="font-bold">
-								Description:
-							</h1>
-							<p className="mt-2 text-gray-700">
-								As we approach the end of May 2024, it’s time for us to reflect
-								on our achievements and areas for growth over the past quarter.
-								Your contributions to the team have been outstanding, and I’m
-								eager to discuss your performance in detail during our upcoming
-								quarterly performance review scheduled for Thursday, May 30th,
-								2024, at 10:00 AM.
-								<br />
-								<br />
-								In addition to our review, we’ll also be discussing updates on
-								our ongoing projects. This is an opportunity for us to align our
-								efforts, address any challenges, and ensure that we’re on track
-								to meet our goals for the quarter.
-								<br />
-								Please come prepared to share your insights, successes, and any
-								concerns you may have. Your input is invaluable as we continue
-								to strive for excellence as a team.
-								<br />
-								Looking forward to our discussion and to celebrating our
-								achievements together!
-								<br />
-								Warm regards,
-							</p>
+                        <div className="mb-4 flex">
+							<h1 strong> User Id </h1>
+							<h1 className="ml-44  ">UR_102</h1>
 						</div>
+
+                        <div className="mb-4 flex">
+							<h1 strong>Role: </h1>
+							<h1 className="ml-44  ">Software Engineering</h1>
+						</div>
+
+                        <div className="mb-4 flex">
+							<h1 strong>Created by: </h1>
+							<h1 className="ml-44  ">Ali</h1>
+						</div>
+
+						
 					</div>
 
 					<Modal

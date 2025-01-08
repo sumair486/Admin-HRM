@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import {
 	Breadcrumb,
@@ -18,9 +18,26 @@ import moment from "moment";
 import brad_logo from "../../../public/assets/Notices 1/home.png";
 import BreadcrumbComponent from "../../layout/BreadcrumbComponent";
 import SearchComponent from "../../layout/SearchComponent";
+import tableData from "../../pages/datatable/tableData.json";
+import { Link } from "react-router-dom";
+
 
 export default function Request() {
 	const [showLeaveInputs, setShowLeaveInputs] = useState(false);
+	const [data, setData] = useState([]);
+
+	useEffect(() => {
+		setData(
+			tableData.map((item) => ({
+				...item,
+				req_id : (
+					<Link to="/requestpage" className="text-sidebarBgColor underline">
+						{item.req_id}
+					</Link>
+				),
+			}))
+		);
+	}, []);
 
 	const onFinish = (values) => {
 		console.log("Success:", values);
@@ -46,6 +63,8 @@ export default function Request() {
 		Rejected: "#faad14",
 	};
 
+	
+
 	const onValuesChange = (changedValues, allValues) => {
 		if (changedValues.requestType !== undefined) {
 			setShowLeaveInputs(changedValues.requestType === "leaves");
@@ -55,103 +74,16 @@ export default function Request() {
 
 	const { Option } = Select;
 
-	const [data, setData] = useState([
-		{
-			s_no: "1",
-			key: "1",
-			id: (
-				<a href="/requestpage" className="text-sidebarBgColor underline">
-					REQ_1
-				</a>
-			),
-			name: "John Doe",
-			designation: "Supervisor",
-			request: "Sick Leave",
-			date: "12/05/2021",
-			status: "New",
-		},
-		{
-			s_no: "2",
-			key: "2",
-			id: <h1 className="text-sidebarBgColor underline">REQ_2</h1>,
-			name: "Jane Smith",
-			designation: "Manager",
-			request: "Advanced Cash",
-			date: "12/05/2021",
-			status: "Approved",
-		},
-		{
-			s_no: "3",
-			key: "3",
-			id: <h1 className="text-sidebarBgColor underline">REQ_3</h1>,
-			name: "Sam Wilson",
-			designation: "Engineer",
-			request: "Loan Request",
-			date: "12/05/2021",
-			status: "Rejected",
-		},
-		{
-			s_no: "4",
-			key: "4",
-			id: <h1 className="text-sidebarBgColor underline">REQ_4</h1>,
-			name: "Emily Davis",
-			designation: "Designer",
-			request: "Sick Leave",
-			date: "12/05/2021",
-			status: "New",
-		},
-		{
-			s_no: "5",
-			key: "5",
-			id: <h1 className="text-sidebarBgColor underline">REQ_5</h1>,
-			name: "Michael Brown",
-			designation: "Technician",
-			request: "Sick Leave",
-			date: "12/05/2021",
-			status: "Rejected",
-		},
-		{
-			s_no: "6",
-			key: "6",
-			id: <h1 className="text-sidebarBgColor underline">REQ_6</h1>,
-			name: "Sophia Green",
-			designation: "HR",
-			request: "Sick Leave",
-			date: "12/05/2021",
-			status: "Approved",
-		},
-		{
-			s_no: "7",
-			key: "7",
-			id: <h1 className="text-sidebarBgColor underline">REQ_7</h1>,
-			name: "James Taylor",
-			designation: "Accountant",
-			request: "Sick Leave",
-			date: "12/05/2021",
-			status: "New",
-		},
-		{
-			s_no: "8",
-			key: "8",
-			id: <h1 className="text-sidebarBgColor underline">REQ_8</h1>,
-			name: "Olivia White",
-			designation: "Supervisor",
-			request: "Sick Leave",
-			date: "12/05/2021",
-			status: "New",
-		},
-	]);
-
 	const columns = [
 		{
 			title: "S.No",
-			dataIndex: "s_no",
+			dataIndex: "key",
 			key: "s_no",
 			sorter: (a, b) => a.s_no.localeCompare(b.s_no),
 		},
 		{
 			title: "Id",
-			dataIndex: "id",
+			dataIndex: "req_id",
 			key: "id",
 			sorter: (a, b) => a.id.localeCompare(b.id),
 		},

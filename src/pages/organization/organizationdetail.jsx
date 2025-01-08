@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { Breadcrumb, Button, Modal, Select, Tooltip, Typography } from "antd";
-
+import { useNavigate } from "react-router-dom";
 
 import edit_icon from "../../../public/assets/Employees 1/pencil (1).png";
 import delete_icon from "../../../public/assets/Employees 1/trash (1).png";
@@ -10,7 +10,7 @@ import BreadcrumbComponent from "../../layout/BreadcrumbComponent";
 
 const { Title, Text } = Typography;
 
-export default function noticedetail() {
+export default function organizationdetail() {
 	const [isModalVisible, setIsModalVisible] = useState(false);
 	const handleDeleteClick = () => {
 		setIsModalVisible(true);
@@ -27,8 +27,8 @@ export default function noticedetail() {
 
 	const breadcrumbItems = [
 		{ icon: brad_logo },
-		{ title: "Warning Letters", href: "" },
-		{ title: "Warning Letter Details", href: "" },
+		{ title: "Departments", href: "" },
+		{ title: "Departments Details", href: "" },
 	];
 
 	return (
@@ -36,7 +36,7 @@ export default function noticedetail() {
 			<div>
 				<BreadcrumbComponent
 					breadcrumbItems={breadcrumbItems}
-					headerTitle="Warning Letter Details"
+					headerTitle="Departments Details"
 				/>
 			</div>
 
@@ -75,12 +75,9 @@ export default function noticedetail() {
 							level={4}
 							className="mb-4 text-2xl font-bold text-sidebarBgColor"
 						>
-							Warning Regarding Violation of Company Rules
+							Design
 						</h1>
-						<div className="mb-4 flex">
-							<h1 strong>Employee Name: </h1>
-							<h1 className="ml-44 font-bold text-sidebarBgColor">Ali Ahmad</h1>
-						</div>
+						
 						<div className="mb-6">
 							<h1 strong className="font-bold">
 								Description:
@@ -91,24 +88,57 @@ export default function noticedetail() {
 								Your contributions to the team have been outstanding, and I’m
 								eager to discuss your performance in detail during our upcoming
 								quarterly performance review scheduled for Thursday, May 30th,
-								2024, at 10:00 AM.
-								<br />
-								<br />
-								In addition to our review, we’ll also be discussing updates on
-								our ongoing projects. This is an opportunity for us to align our
-								efforts, address any challenges, and ensure that we’re on track
-								to meet our goals for the quarter.
-								<br />
-								Please come prepared to share your insights, successes, and any
-								concerns you may have. Your input is invaluable as we continue
-								to strive for excellence as a team.
-								<br />
-								Looking forward to our discussion and to celebrating our
-								achievements together!
-								<br />
-								Warm regards,
+								2024, at 10:00 AM.Please come prepared to share your insights, successes, and any
+								concerns you may have. 
+								
+								
+								
 							</p>
 						</div>
+                        <div className="mb-4 flex">
+							<h1 className="font-bold" strong>Total Employee: </h1>
+							<h1 className="ml-44 font-bold text-sidebarBgColor">34</h1>
+						</div>
+
+                        <h1 className="font-bold" strong> Employees Name: </h1>
+
+                        <div className="flex justify-between w-[800px] mt-4">
+							<div className="">Ali Al Ghafil</div>
+							<div className="">Mohammad Khan</div>
+							<div className="">Ali Ahmed</div>
+							<div className="">Asghar Shah</div>
+
+						</div>
+
+                      
+                        <div className="flex justify-between w-[800px]">
+							<div className="">Ali Al Ghafil</div>
+							<div className="">Mohammad Khan</div>
+							<div className="">Ali Ahmed</div>
+							<div className="">Asghar Shah</div>
+
+						</div>
+
+
+                        <div className="flex justify-between w-[800px]">
+							<div className="">Ali Al Ghafil</div>
+							<div className="">Mohammad Khan</div>
+							<div className="">Ali Ahmed</div>
+							<div className="">Asghar Shah</div>
+
+						</div>
+
+                        <div className="flex justify-between w-[800px]">
+							<div className="">Ali Al Ghafil</div>
+							<div className="">Mohammad Khan</div>
+							<div className="">Ali Ahmed</div>
+							<div className="">Asghar Shah</div>
+
+						</div>
+
+
+                       
+
 					</div>
 
 					<Modal

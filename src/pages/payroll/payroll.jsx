@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 
 import { Form,Flex, Button,Row,Radio,Divider,Card,Typography
 	, Select,Modal,Input,Col, Table } from "antd";
 
 import { Link } from "react-router-dom";
 
-import { SearchOutlined } from "@ant-design/icons";
+
 
 import brad_logo from "../../../public/assets/Notices 1/home.png";
 import BreadcrumbComponent from "../../layout/BreadcrumbComponent";
@@ -15,13 +15,29 @@ import delete_icon from "../../../public/assets/Employees 1/trash (1).png";
 import print_logo from "../../../public/assets/Notices 1/Group 164179.png";
 import download_logo from "../../../public/assets/Notices 1/Group 164178.png";
 
+import tableData from "../../pages/datatable/tableData.json";
+
+
 
 export default function payroll() {
 	const { Title, Text } = Typography;
 	const { Option } = Select;
 
 	
-	
+	const [data, setData] = useState([]);
+	useEffect(() => {
+		setData(
+			tableData.map((item) => ({
+				...item,
+				id : (
+					<Link onClick={empShowModal} className="text-sidebarBgColor underline">
+						{item.id}
+					</Link>
+				),
+			}))
+		);
+	}, []);
+
 // model 1
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const showModal = () => {
@@ -70,74 +86,7 @@ export default function payroll() {
 
 	
 	const [selectedRowKeys, setSelectedRowKeys] = useState([]);
-	const [data, setData] = useState([
-		{
-			key: "1",
-			id: <Link onClick={empShowModal} className="text-sidebarBgColor underline">
-			EMP_01
-		</Link>,
-			name: "John Doe",
-			salary: "35,000 PKR",
-			
-			status: "Paid",
-		},
-		{
-			key: "2",
-			id: <h1 className="text-sidebarBgColor underline">EMP_02</h1>,
-			name: "Jane Smith",
-			salary: "40,000 PKR",
-		
-			status: "Unpaid",
-		},
-		{
-			key: "3",
-			id: <h1 className="text-sidebarBgColor underline">EMP_03</h1>,
-			name: "Sam Wilson",
-			salary: "50,000 PKR",
-			
-			status: "Paid",
-		},
-		{
-			key: "4",
-			id: <h1 className="text-sidebarBgColor underline">EMP_04</h1>,
-			name: "Emily Davis",
-			salary: "20,000 PKR",
-			
-			status: "Unpaid",
-		},
-		{
-			key: "5",
-			id: <h1 className="text-sidebarBgColor underline">EMP_05</h1>,
-			name: "Michael Brown",
-			salary: "30,000 PKR",
-			
-			status: "Paid",
-		},
-		{
-			key: "6",
-			id: <h1 className="text-sidebarBgColor underline">EMP_06</h1>,
-			name: "Sophia Green",
-			salary: "30,000 PKR",
-			
-			status: "Unpaid",
-		},
-		{
-			key: "7",
-			id: <h1 className="text-sidebarBgColor underline">EMP_07</h1>,
-			name: "James Taylor",
-			salary: "30,000 PKR",
-			
-			status: "Paid",
-		},
-		{
-			key: "8",
-			id: <h1 className="text-sidebarBgColor underline">EMP_08</h1>,
-			name: "Olivia White",
-			salary: "45,000 PKR",
-			
-			status: "Paid",
-		},
-	]);
+	
 
 	const columns = [
 		{
@@ -158,7 +107,7 @@ export default function payroll() {
 		
 		{
 			title: "Status",
-			dataIndex: "status",
+			dataIndex: "payroll_status",
 			key: "status",
 			sorter: (a, b) => a.status.localeCompare(b.status),
 			render: (text) => (

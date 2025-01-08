@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 
 import { Flex, Form, Input, Modal, Radio, Select, Table } from "antd";
 import moment from "moment";
 import { Link } from "react-router-dom";
 
-import { SearchOutlined } from "@ant-design/icons";
+
 
 import edit_icon from "../../../public/assets/Employees 1/pencil (1).png";
 import delete_icon from "../../../public/assets/Employees 1/trash (1).png";
 import brad_logo from "../../../public/assets/Notices 1/home.png";
 import BreadcrumbComponent from "../../layout/BreadcrumbComponent";
 import SearchComponent from "../../layout/SearchComponent";
+import tableData from "../../pages/datatable/tableData.json";
+
 
 export default function announcement() {
 	const { Option } = Select;
@@ -32,100 +34,33 @@ export default function announcement() {
 	const onFinishFailed = (errorInfo) => {
 		console.log("Failed:", errorInfo);
 	};
+	
+	const [data, setData] = useState([]);
+	useEffect(() => {
+		setData(
+			tableData.map((item) => ({
+				...item,
+				an_id : (
+					<Link to="/announcements-details" className="text-sidebarBgColor underline">
+						{item.an_id}
+					</Link>
+				),
+			}))
+		);
+	}, []);
 
-	const [data, setData] = useState([
-		{
-			s_no: "1",
-			key: "1",
-			id: (
-				<Link
-					to="/announcements-details"
-					className="text-sidebarBgColor underline"
-				>
-					AN_01
-				</Link>
-			),
-			date: "12/05/2021",
-
-			holiday: "HR International Day",
-			subject: "Poor Performance",
-		},
-		{
-			s_no: "2",
-			key: "2",
-			id: <h1 className="text-sidebarBgColor underline">AN_02</h1>,
-			date: "12/05/2021",
-			holiday: "HR International Day",
-
-			status: "Approved",
-		},
-		{
-			s_no: "3",
-			key: "3",
-			id: <h1 className="text-sidebarBgColor underline">AN_03</h1>,
-			date: "12/05/2021",
-			holiday: "HR International Day",
-
-			status: "Rejected",
-		},
-		{
-			s_no: "4",
-			key: "4",
-			id: <h1 className="text-sidebarBgColor underline">AN_04</h1>,
-			date: "12/05/2021",
-			holiday: "HR International Day",
-
-			status: "New",
-		},
-		{
-			s_no: "5",
-			key: "5",
-			id: <h1 className="text-sidebarBgColor underline">AN_05</h1>,
-			date: "12/05/2021",
-			holiday: "HR International Day",
-
-			status: "Rejected",
-		},
-		{
-			s_no: "6",
-
-			key: "6",
-			id: <h1 className="text-sidebarBgColor underline">AN_06</h1>,
-			date: "12/05/2021",
-			holiday: "HR International Day",
-
-			status: "Approved",
-		},
-		{
-			s_no: "7",
-			key: "7",
-			id: <h1 className="text-sidebarBgColor underline">AN_07</h1>,
-			date: "12/05/2021",
-			holiday: "HR International Day",
-
-			status: "New",
-		},
-		{
-			s_no: "8",
-			key: "8",
-			id: <h1 className="text-sidebarBgColor underline">AN_08</h1>,
-			date: "12/05/2021",
-			holiday: "HR International Day",
-
-			status: "New",
-		},
-	]);
+	
 
 	const columns = [
 		{
 			title: "S.No",
-			dataIndex: "s_no",
+			dataIndex: "key",
 			key: "s_no",
 			sorter: (a, b) => a.s_no.localeCompare(b.s_no),
 		},
 		{
 			title: "Id",
-			dataIndex: "id",
+			dataIndex: "an_id",
 			key: "id",
 			sorter: (a, b) => a.id.localeCompare(b.id),
 		},

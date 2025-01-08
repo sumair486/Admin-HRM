@@ -25,9 +25,19 @@ const Notices = lazy(() => import("../pages/notice/notice"));
 const NoticesDetail = lazy(() => import("../pages/notice/noticedetail"));
 
 const Organizations = lazy(() => import("../pages/organization/organization"));
+const OrganizationDetail = lazy(() => import("../pages/organization/organizationdetail"));
+const LevelDetail = lazy(() => import("../pages/organization/leveldetail"));
+const DesignationDetail = lazy(() => import("../pages/organization/designationdetail"));
+
+
+
 const Payrolls = lazy(() => import("../pages/payroll/payroll"));
 const Reports = lazy(() => import("../pages/report/report"));
 const User_Role = lazy(() => import("../pages/user_role/user_role"));
+const User_Detail = lazy(() => import("../pages/user_role/userdetail"));
+const Role_Detail = lazy(() => import("../pages/user_role/roledetail"));
+
+
 const Warnings = lazy(() => import("../pages/warning/warning"));
 const WarningDetail = lazy(() => import("../pages/warning/warningdetail"));
 
@@ -112,14 +122,32 @@ export const routes = [
 	},
 
 	{
-		path: "/noticesdetail",
+		path: "/notices-detail",
 		element: <NoticesDetail />,
+		isPrivate: true,
+	},
+	
+	{
+		path: "/org-structure",
+		element: <Organizations />,
+		isPrivate: true,
+	},
+	{
+		path: "/organization-detail",
+		element: <OrganizationDetail />,
+		isPrivate: true,
+	},
+
+
+	{
+		path: "/level-detail",
+		element: <LevelDetail />,
 		isPrivate: true,
 	},
 
 	{
-		path: "/org-structure",
-		element: <Organizations />,
+		path: "/designation-detail",
+		element: <DesignationDetail />,
 		isPrivate: true,
 	},
 
@@ -138,6 +166,18 @@ export const routes = [
 	{
 		path: "/users-roles",
 		element: <User_Role />,
+		isPrivate: true,
+	},
+
+	{
+		path: "/users-detail",
+		element: <User_Detail />,
+		isPrivate: true,
+	},
+
+	{
+		path: "/roles-detail",
+		element: <Role_Detail />,
 		isPrivate: true,
 	},
 
