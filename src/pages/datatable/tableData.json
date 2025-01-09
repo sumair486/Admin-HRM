@@ -29,6 +29,8 @@
       "timeIn": "09:00 AM",
       "timeOut": "05:00 PM",
 			"aknowledged": "Yes",
+			"loss": "3",
+
       "role": "Full Stack",
       "payroll_status": "Paid",
       "department": "HR",
@@ -54,6 +56,8 @@
       "et_id": "ET_02",
       "req_name": "Transport",
       "pol_name": "Policy",
+			"loss": "3",
+
 			"salary": "35,000 PKR",
       "payroll_status": "Paid",
 			"subject": "Rules Violation",
@@ -89,6 +93,8 @@
       "us_id": "USR_03",
       "employment": "Full Time",
       "req_name": "Leaves",
+			"loss": "3",
+
       "pol_name": "Policy",
 			"employees": "20",
 			"salary": "35,000 PKR",
@@ -127,6 +133,8 @@
       "employment": "Full Time",
 			"employees": "20",
       "role": "Back End",
+			"loss": "3",
+
 			"salary": "35,000 PKR",
       "payroll_status": "Unpaid",
 			"subject": "Rules Violation",
@@ -161,6 +169,8 @@
 			"employees": "40",
       "lv_id": "LV_05",
       "ds_id": "DS_05",
+			"loss": "3",
+
       "employment": "Full Time",
       "req_name": "Advance Cash",
 			"salary": "35,000 PKR",

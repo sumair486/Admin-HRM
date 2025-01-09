@@ -11,6 +11,7 @@ import delete_icon from "../../../public/assets/Employees 1/trash (1).png";
 import brad_logo from "../../../public/assets/Notices 1/home.png";
 import BreadcrumbComponent from "../../layout/BreadcrumbComponent";
 import SearchComponent from "../../layout/SearchComponent";
+import SelectComponent from "../../layout/SelectComponent";
 
 import tableData from "../../pages/datatable/tableData.json";
 
@@ -141,6 +142,16 @@ export default function warning() {
 							Total(23)
 						</h1>
 					</div>
+
+					<SelectComponent
+          label="Filter"
+          options={[
+            { label: "Select 1", value: "select1" },
+            { label: "Select 2", value: "select2" },
+            { label: "Select 3", value: "select3" },
+          ]}
+        />		
+					
 				</div>
 
 				<Table columns={columns} dataSource={data} pagination={true} />

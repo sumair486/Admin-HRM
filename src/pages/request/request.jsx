@@ -20,6 +20,8 @@ import BreadcrumbComponent from "../../layout/BreadcrumbComponent";
 import SearchComponent from "../../layout/SearchComponent";
 import tableData from "../../pages/datatable/tableData.json";
 import { Link } from "react-router-dom";
+import SelectComponent from "../../layout/SelectComponent";
+
 
 
 export default function Request() {
@@ -176,23 +178,14 @@ export default function Request() {
 							Total(23)
 						</h1>
 					</div>
-					<div className="flex items-center">
-						<div>
-							<h1 className="text-customCategoryColor">Category</h1>
-						</div>
-						<div className="px-2">
-							<Select
-								style={{
-									width: 239,
-									height: 40,
-								}}
-							>
-								<Option value="select">Select 1</Option>
-								<Option>Select 2</Option>
-								<Option>Select 3</Option>
-							</Select>
-						</div>
-					</div>
+							<SelectComponent
+				label="Category"
+				options={[
+					{ label: "Select 1", value: "select1" },
+					{ label: "Select 2", value: "select2" },
+					{ label: "Select 3", value: "select3" },
+				]}
+				/>		
 				</div>
 
 				<Table columns={columns} dataSource={data} pagination={true} />

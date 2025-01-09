@@ -25,10 +25,14 @@ import brad_logo from "../../../public/assets/Notices 1/home.png";
 import BreadcrumbComponent from "../../layout/BreadcrumbComponent";
 import SearchComponent from "../../layout/SearchComponent";
 import tableData from "../../pages/datatable/tableData.json";
+import SelectComponent from "../../layout/SelectComponent";
 
 
 export default function employees() {
 	const { Option } = Select;
+
+	
+
 	const [data, setData] = useState([]);
 
 
@@ -140,60 +144,44 @@ export default function employees() {
 			</section>
 
 			<section className="mt-5 rounded-lg border border-gray-300">
-				<div className="flex items-center justify-between px-5 py-3">
-					<div>
-						<h1 className="text-sidebarBgColor text-2xl font-semibold">
-							Total(23)
-						</h1>
-					</div>
-					<div className="flex items-center">
-						<div>
-							<h1 className="text-gray-400">Department</h1>
-						</div>
-						<div className="px-2">
-							<Select
-								style={{
-									width: 239,
-									height: 40,
-								}}
-							>
-								<Option value="select">Select 1</Option>
-								<Option>Select 2</Option>
-								<Option>Select 3</Option>
-							</Select>
-						</div>
-						<div>
-							<h1 className="text-gray-400">Designation</h1>
-						</div>
-						<div className="px-2">
-							<Select
-								style={{
-									width: 239,
-									height: 40,
-								}}
-							>
-								<Option value="select">Select 1</Option>
-								<Option>Select 2</Option>
-								<Option>Select 3</Option>
-							</Select>
-						</div>
-						<div>
-							<h1 className="text-gray-400">Employment</h1>
-						</div>
-						<div className="px-2">
-							<Select
-								style={{
-									width: 239,
-									height: 40,
-								}}
-							>
-								<Option value="select">Select 1</Option>
-								<Option>Select 2</Option>
-								<Option>Select 3</Option>
-							</Select>
-						</div>
-					</div>
-				</div>
+			<div className="flex items-center justify-between px-5 py-3">
+      <div>
+        <h1 className="text-sidebarBgColor text-2xl font-semibold">
+          Total(23)
+        </h1>
+      </div>
+      <div className="flex items-center">
+        <SelectComponent
+          label="Department"
+          options={[
+            { label: "Select 1", value: "select1" },
+            { label: "Select 2", value: "select2" },
+            { label: "Select 3", value: "select3" },
+          ]}
+         
+        />
+        <div className="px-2" />
+        <SelectComponent
+          label="Designation"
+          options={[
+            { label: "Select 1", value: "select1" },
+            { label: "Select 2", value: "select2" },
+            { label: "Select 3", value: "select3" },
+          ]}
+       
+        />
+        <div className="px-2" />
+        <SelectComponent
+          label="Employment"
+          options={[
+            { label: "Select 1", value: "select1" },
+            { label: "Select 2", value: "select2" },
+            { label: "Select 3", value: "select3" },
+          ]}
+       
+        />
+      </div>
+    </div>
 
 				<Table columns={columns} dataSource={data} pagination={true} />
 			</section>

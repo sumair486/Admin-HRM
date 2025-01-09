@@ -14,6 +14,7 @@ import edit_icon from "../../../public/assets/Employees 1/pencil (1).png";
 import delete_icon from "../../../public/assets/Employees 1/trash (1).png";
 import print_logo from "../../../public/assets/Notices 1/Group 164179.png";
 import download_logo from "../../../public/assets/Notices 1/Group 164178.png";
+import SelectComponent from "../../layout/SelectComponent";
 
 import tableData from "../../pages/datatable/tableData.json";
 
@@ -200,23 +201,14 @@ export default function payroll() {
 							Total(23)
 						</h1>
 					</div>
-					<div className="flex items-center">
-						<div>
-							<h1 className="text-gray-400">Filter</h1>
-						</div>
-						<div className="px-2">
-							<Select
-								style={{
-									width: 239,
-									height: 40,
-								}}
-							>
-								<Option value="select">All</Option>
-								<Option>Select 2</Option>
-								<Option>Select 3</Option>
-							</Select>
-						</div>
-					</div>
+					<SelectComponent
+          label="Filter"
+          options={[
+            { label: "Select 1", value: "select1" },
+            { label: "Select 2", value: "select2" },
+            { label: "Select 3", value: "select3" },
+          ]}
+        />		
 				</div>
 
 				<Table

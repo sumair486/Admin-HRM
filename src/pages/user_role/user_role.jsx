@@ -330,7 +330,7 @@ export default function user_role() {
 					onCancel={handleCancel}
 				>
 					<Form
-						name="basic"
+						// name="basic"?
 						labelCol={{ span: 8 }}
 						wrapperCol={{ span: 24 }}
 						style={{ maxWidth: 775 }}
@@ -397,7 +397,7 @@ export default function user_role() {
     style={{ maxWidth: 775 }}
   >
     <Form
-      name="basic"
+    //   name="basic"
       labelCol={{ span: 8 }}
       wrapperCol={{ span: 24 }}
       style={{ maxWidth: 775 }}

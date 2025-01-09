@@ -33,14 +33,15 @@ const DesignationDetail = lazy(() => import("../pages/organization/designationde
 
 const Payrolls = lazy(() => import("../pages/payroll/payroll"));
 const Reports = lazy(() => import("../pages/report/report"));
+const AdvanceReports = lazy(() => import("../pages/report/advancecash"));
+const AttendanceReports = lazy(() => import("../pages/report/attendancereport"));
+const SalaryReports = lazy(() => import("../pages/report/salaryreport"));
+const LeaveReports = lazy(() => import("../pages/report/leaverequest"));
 const User_Role = lazy(() => import("../pages/user_role/user_role"));
 const User_Detail = lazy(() => import("../pages/user_role/userdetail"));
 const Role_Detail = lazy(() => import("../pages/user_role/roledetail"));
-
-
 const Warnings = lazy(() => import("../pages/warning/warning"));
 const WarningDetail = lazy(() => import("../pages/warning/warningdetail"));
-
 const ServiceDetail = lazy(() => import("../pages/services/ServiceDetail"));
 
 // ================================================================================================
@@ -156,12 +157,35 @@ export const routes = [
 		element: <Payrolls />,
 		isPrivate: true,
 	},
-
+	
 	{
 		path: "/reports",
 		element: <Reports />,
 		isPrivate: true,
 	},
+	{
+		path: "/advance-cash-reports",
+		element: <AdvanceReports />,
+		isPrivate: true,
+	},
+
+	{
+		path: "/leave-reports",
+		element: <LeaveReports />,
+		isPrivate: true,
+	},
+	{
+		path: "/salary-reports",
+		element: <SalaryReports />,
+		isPrivate: true,
+	},
+
+	{
+		path: "/attendance-reports",
+		element: <AttendanceReports />,
+		isPrivate: true,
+	},
+	
 
 	{
 		path: "/users-roles",
