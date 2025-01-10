@@ -48,11 +48,6 @@ export default function leaverequest() {
   const duration = ["Jan", "Feb", "March"];
 
 
-  
-  
-
-
-
   return (
     <>
       <div>

@@ -3,6 +3,7 @@ import React, { useState,useEffect } from "react";
 import { Flex, Form,Switch, Input, Modal, Select, Table, Tabs,Button,Divider  } from "antd";
 import moment from "moment";
 import { Link } from "react-router-dom";
+import Payslip from './payslip';
 
 
 
@@ -31,7 +32,7 @@ export default function organization() {
 	console.log(key);
   };
 	const { Option } = Select;
-
+//department 
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const showModal = () => {
 		setIsModalOpen(true);
@@ -62,8 +63,94 @@ export default function organization() {
 		setIsLevelModalOpen(false);
 	};
 
-	// tab 1 data and
+// designation
+	const [isDesigModalOpen, setIsDesigModalOpen] = useState(false);
+	const DesigShowModal = () => {
+		setIsDesigModalOpen(true);
+	};
+	const DesighandleOk = () => {
+		setIsDesigModalOpen(false);
+	};
+	const DesighandleCancel = () => {
+		setIsDesigModalOpen(false);
+	};
 
+	// employee
+	const [isEmployeeModalOpen, setIsEmployeeModalOpen] = useState(false);
+	const EmployeeShowModal = () => {
+		setIsEmployeeModalOpen(true);
+	};
+	const EmployeehandleOk = () => {
+		setIsEmployeeModalOpen(false);
+	};
+	const EmployeehandleCancel = () => {
+		setIsEmployeeModalOpen(false);
+	};
+
+	const handleDelete = (key) => {
+		const newData = data.filter((item) => item.key !== key);
+		setData(newData);
+	};
+
+
+	// request leave 
+
+	
+	const [isLeaveModalOpen, setIsLeaveModalOpen] = useState(false);
+	const LeaveShowModal = () => {
+		setIsLeaveModalOpen(true);
+	};
+	const LeavehandleOk = () => {
+		setIsLeaveModalOpen(false);
+	};
+	const LeavehandleCancel = () => {
+		setIsLeaveModalOpen(false);
+	};
+
+	// request add 
+
+	 const [reqfields, setreqFields] = useState([{ id: Date.now(), type: "", label: "", mandatory: false }]);
+
+  const addField = () => {
+    setreqFields([...fields, { id: Date.now(), type: "", label: "", mandatory: false }]);
+  };
+
+  const removeField = (id) => {
+    setreqFields(fields.filter((field) => field.id !== id));
+  };
+
+  const handleFieldChange = (id, key, value) => {
+    setreqFields(
+      reqfields.map((field) =>
+        field.id === id ? { ...field, [key]: value } : field
+      )
+    );
+  }; 
+
+
+	const [isRequestModalOpen, setIsRequestModalOpen] = useState(false);
+	const RequestShowModal = () => {
+		setIsRequestModalOpen(true);
+	};
+	const RequesthandleOk = () => {
+		setIsRequestModalOpen(false);
+	};
+	const RequesthandleCancel = () => {
+		setIsRequestModalOpen(false);
+	};
+
+	
+
+	const breadcrumbItems = [
+		{ icon: brad_logo },
+		{ title: "Organizational Structure", href: "" },
+	];
+
+
+	// ----------------------------------------tab column ---------------------------------
+
+
+// tab 1 colum 
 	const [data, setData] = useState([]);
 	useEffect(() => {
 		setData(
@@ -188,6 +275,10 @@ export default function organization() {
 		},
 	];
 
+
+
+	// tab column 3 
+
 	const [data3, setData3] = useState([]);
 	useEffect(() => {
 		setData3(
@@ -201,7 +292,6 @@ export default function organization() {
 			}))
 		);
 	}, []);
-	// tab 3 
 
 	
 	const columns3 = [
@@ -251,7 +341,7 @@ export default function organization() {
 		},
 	];
 
-
+// tab 4 collumn 
 	const [data4, setData4] = useState([]);
 	useEffect(() => {
 		setData4(
@@ -313,23 +403,8 @@ export default function organization() {
 		},
 	];
 
-
-
-	const handleDelete = (key) => {
-		const newData = data.filter((item) => item.key !== key);
-		setData(newData);
-	};
-
-	const breadcrumbItems = [
-		{ icon: brad_logo },
-		{ title: "Organizational Structure", href: "" },
-	];
-
+	
 	// shift tab
-
-
-
-
 
 	const shift_item = [
 		{
@@ -500,7 +575,7 @@ useEffect(() => {
 		tableData.map((item) => ({
 			...item,
 			rq_id : (
-				<Link to="/designation-detail" className="text-sidebarBgColor underline">
+				<Link  onClick={LeaveShowModal} className="text-sidebarBgColor underline">
 					{item.rq_id}
 				</Link>
 			),
@@ -619,7 +694,7 @@ const columns6 = [
 			) : null,
 	},
 ];
-
+// -------------------------------------------tab data-------------------------------------------
 	const items = [
 
 		// tab 1
@@ -711,7 +786,7 @@ const columns6 = [
 					</div>
 				<div>
 					<Link
-						onClick={showModal}
+						onClick={DesigShowModal}
 						className="rounded-md bg-sidebarBgColor p-3 text-white"
 					>
 						+ Add Designation
@@ -745,7 +820,7 @@ const columns6 = [
 					</div>
 				<div>
 					<Link
-						onClick={showModal}
+						onClick={EmployeeShowModal}
 						className="rounded-md bg-sidebarBgColor p-3 text-white"
 					>
 						+ Add Employment Type
@@ -816,7 +891,7 @@ const columns6 = [
 					</div>
 				<div>
 					<Link
-						onClick={showModal}
+						onClick={RequestShowModal}
 						className="rounded-md bg-sidebarBgColor p-3 text-white"
 					>
 						+ Add Request Type
@@ -868,87 +943,7 @@ const columns6 = [
 			key: '8',
 			label: 'Pay Slips',
 			children: 
-
-
-			<div class="p-6 bg-white shadow-md rounded-md">
-				<div className="">
-					<h1 className="text-2xl font-semibold text-sidebarBgColor">Payslip</h1>
-				</div>
-				<Divider/>
-
-  <div class="flex justify-between space-x-6 mt-5">
-   
-    <div class="flex-1 flex flex-col space-y-4">
-      <h2 class="text-lg font-bold">Earnings</h2>
-	  <div class="flex justify-between items-center font-bold">
-        <div><h1>Field Name</h1></div>
-        <div><h1>Action</h1></div>
-      </div>
-      <div class="flex justify-between items-center">
-        <span>Field Name 1</span>
-        <button class="text-red-500 hover:text-red-600">
-          <img src={delete_icon}></img>
-        </button>
-      </div>
-      <div class="flex justify-between items-center">
-        <span>Field Name 2</span>
-        <button class="text-red-500 hover:text-red-600">
-		<img src={delete_icon}></img>
-
-        </button>
-      </div>
-	  <div>
-      <button class="text-blue-500 hover:underline">+ Add Another Text Field</button>
-
-	  </div>
-    </div>
-
-   
-    <div class="flex-1 flex flex-col space-y-4">
-      <h2 class="text-lg font-bold">Deductions</h2>
-	  <div class="flex justify-between items-center font-bold">
-        <div><h1>Field Name</h1></div>
-        <div><h1>Action</h1></div>
-      </div>
-      <div class="flex justify-between items-center">
-        <span>Field Name 1</span>
-        <button class="text-red-500 hover:text-red-600">
-		<img src={delete_icon}></img>
-
-        </button>
-      </div>
-      <div class="flex justify-between items-center">
-        <span>Field Name 2</span>
-        <button class="text-red-500 hover:text-red-600">
-		<img src={delete_icon}></img>
-
-        </button>
-      </div>
-	  <div>
-      <button class="text-blue-500 hover:underline">+ Add Another Text Field</button>
-
-	  </div>
-    </div>
-
-    
-    <div class="flex-1 flex flex-col space-y-4">
-	<h2 class="text-lg font-bold">Advance Cash</h2>
-
-      <h2 class="text-md font-bold">Deduct Advance Cash</h2>
-      <div>
-        <p class="text-sm">By enabling, the advance cash will be deducted automatically in the next month.</p>
-        <label class="flex items-center space-x-2 mt-5">
-						<Switch />
-
-       
-        </label>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
+			<Payslip/>
 		  },
 
 
@@ -961,7 +956,11 @@ const columns6 = [
 				<BreadcrumbComponent breadcrumbItems={breadcrumbItems} />
 			</div>
 
-			<Tabs   type="card" defaultActiveKey="1" items={items} onChange={onChange} />
+		
+			<Tabs 
+			
+			type="card" defaultActiveKey="1" items={items} onChange={onChange} />
+
 
 			
 
@@ -1114,6 +1113,145 @@ const columns6 = [
 			</section>
 
 
+			{/* designation model  */}
+
+		
+			<section>
+				<Modal
+					title="Add Designation"
+					open={isDesigModalOpen}
+					onOk={DesighandleOk}
+					style={{ maxWidth: 775 }}
+					onCancel={DesighandleCancel}
+				>
+					<Form
+						name="basic"
+						labelCol={{ span: 8 }}
+						wrapperCol={{ span: 24 }}
+						style={{ maxWidth: 775 }}
+						initialValues={{ remember: true }}
+						layout="vertical"
+						// item="center"
+						onFinish={onFinish}
+						onFinishFailed={onFinishFailed}
+						autoComplete="off"
+					>
+						
+
+						<Form.Item
+							label={<span className="text-customCategoryColor">Designation Title</span>}
+							name="designation"
+						>
+							<Input
+								placeholder="Department Title"
+								className="h-[40px] w-[480px]"
+							/>
+						</Form.Item>
+
+						<Form.Item
+							label={
+								<span className="text-customCategoryColor">Description</span>
+							}
+							name="desig_description"
+						>
+							<Input.TextArea className="h-[100px]" />
+						</Form.Item>
+					</Form>
+				</Modal>
+			</section>
+
+			{/* employee model  */}
+
+		
+			<section>
+				<Modal
+					title="Add Employment"
+					open={isEmployeeModalOpen}
+					onOk={EmployeehandleOk}
+					style={{ maxWidth: 775 }}
+					onCancel={EmployeehandleCancel}
+				>
+					<Form
+						name="basic"
+						labelCol={{ span: 8 }}
+						wrapperCol={{ span: 24 }}
+						style={{ maxWidth: 775 }}
+						initialValues={{ remember: true }}
+						layout="vertical"
+						// item="center"
+						onFinish={onFinish}
+						onFinishFailed={onFinishFailed}
+						autoComplete="off"
+					>
+						
+
+						<Form.Item
+							label={<span className="text-customCategoryColor">Name of Employment</span>}
+							name="name_employee"
+						>
+							<Input
+								placeholder="Name of Employment"
+								className="h-[40px] w-[480px]"
+							/>
+						</Form.Item>
+
+						
+					</Form>
+				</Modal>
+			</section>
+
+
+			{/* request  model  */}
+
+		
+			<section>
+				<Modal
+					title="Leave Details"
+					open={isLeaveModalOpen}
+					onOk={LeavehandleOk}
+					style={{ maxWidth: 775 }}
+					onCancel={LeavehandleCancel}
+				>
+					<Form
+						name="basic"
+						labelCol={{ span: 8 }}
+						wrapperCol={{ span: 24 }}
+						style={{ maxWidth: 775 }}
+						initialValues={{ remember: true }}
+						layout="vertical"
+						// item="center"
+						onFinish={onFinish}
+						onFinishFailed={onFinishFailed}
+						autoComplete="off"
+					>
+						
+					<h1 className="text-lg font-semibold">Request Approver</h1>
+						<Form.Item className="mt-5"
+						
+							name="admin_desig"
+						>
+							<Input
+								placeholder="Admin"
+								className="h-[40px] w-[480px]"
+							/>
+						</Form.Item>
+
+						<Form.Item
+							
+							name="admin_name"
+						>
+							<Input
+								placeholder="Osama"
+								className="h-[40px] w-[480px]"
+							/>
+						</Form.Item>
+
+						
+					</Form>
+				</Modal>
+			</section>
+
+{/* request add link */}
 			
 		</>
 	);
